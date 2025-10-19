@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <title>Form</title>
+
+
+</head>
+<body>
+<header>
+    <h1>Book Your Sports Space</h1>
+</header>
+<main>
+    <form>
+        <section>
+            <h2>Personal information</h2>
+            <label>First name <input type="text" name="first_name"/></label><br />
+            <label>Last name <input type="text" name="last_name"/></label><br />
+            <fieldset>
+                <legend>Gender</legend>
+                <label>Female <input type="text" name="female"/></label><br />
+                <label>Male <input type="text" name="male"/></label><br />
+                <label>Non-binary <input type="text" name="no_binary"/></label><br />
+                <label>Wolf <input type="text" name="wolf"/></label><br />
+                <label>Other <input type="text" name="other"/></label><br />
+            </fieldset>
+            <label>Date of birth <input type="date" name="date_birth"/></label><br />
+            <label>Age <input type="number" name="age"/></label><br />
+
+
+        </section>
+        <section>
+            <h2>Contact</h2>
+            <label>Email <input type="email" name="email"/></label><br />
+            <label>Phone code
+                <select name="phone_code">
+                    <option value="+421">+421</option>
+                    <option value="+420">+420</option>
+                    <option value="+48">+48</option>
+                    <option value="+43">+43</option>
+                </select>
+            </label>
+            <label>Phone number <input type="tel" name="ph_num"/></label><br />
+
+
+        </section>
+        <section>
+            <h2>Facility selection</h2>
+            <label>Facility type
+                <select id="facility_type">
+                    <option value = "">Select type</option>
+                    <option value="gym">Gym</option>
+                    <option value="hall">Sports hall</option>
+                    <option value="field">Field</option>
+                </select>
+            </label><br />
+            <label>Facility
+                <select id="facility">
+                    <option value="">Select facility</option>
+                </select>
+            </label>
+        </section>
+        <section>
+            <h2>Data and time</h2>
+            <label>Date <input type="date" id="date" name="date"></label><br />
+            <label>Time
+                <select name="time" id="time" disabled>
+                    <option value="">Select time</option>
+                </select>
+            </label>
+        </section>
+    </form>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
