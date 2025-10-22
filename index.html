@@ -6,99 +6,171 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
-
     <title>Form</title>
-
-
 </head>
 <body>
 <header>
     <h1>Book Your Sports Space</h1>
 </header>
 <main>
-    <form>
-        <section>
-            <h2>Personal information</h2>
-            <label>First name <input type="text" name="first_name"/></label><br />
-            <label>Last name <input type="text" name="last_name"/></label><br />
-            <fieldset>
-                <legend>Gender</legend>
-                <label><input type="radio" name="gender" value="female"> Female</label><br />
-                <label><input type="radio" name="gender" value="male"> Male</label><br />
-                <label><input type="radio" name="gender" value="nonbinary"> Non-binary</label><br />
-                <label><input type="radio" name="gender" value="wolf"> Wolf</label><br />
-                <label><input type="radio" name="gender" value="other"> Other</label><br />
-            </fieldset>
-            <label>Date of birth <input type="date" name="date_birth"/></label><br />
-            <label>Age <input type="number" name="age" min="0"></label><br />
+    <form id = "myForm" action="https://form2mail.iolab.sk/form2mail.php"  method="post" enctype="multipart/form-data">
+        <input type="hidden" name="apikey" value="9b24a0132ee17a27ab419900f3d67b92">
+        <input type="hidden" name="from" value="xtrach@stuba.sk">
+        <input type="hidden" name="sender" value="Mariia Trach">
+        <input type="hidden" name="to" value="feistu01@gmail.com">
+        <input type="hidden" name="subject" value="New Sports Facility Booking">
+        <input type="hidden" name="redirectOk" value="https://www.stuba.sk">
+        <input type="hidden" name="redirectFalse" value="https://www.stuba.sk">
 
-
-        </section>
-        <section>
-            <h2>Contact</h2>
-            <label>Email <input type="email" name="email"/></label><br />
-            <label>Phone code
-                <select name="phone_code">
-                    <option value="+421">+421</option>
-                    <option value="+420">+420</option>
-                    <option value="+48">+48</option>
-                    <option value="+43">+43</option>
-                </select>
-            </label>
-            <label>Phone number <input type="tel" name="ph_num" pattern="[0-9\s\-]{6,}" inputmode="numeric" placeholder="123 456 789"></label><br />
-
-
-        </section>
-        <section>
-            <h2>Facility selection</h2>
-            <label>Facility type
-                <select id="facility_type">
-                    <option value = "">Select type</option>
-                    <option value="gym">Gym</option>
-                    <option value="hall">Sports hall</option>
-                    <option value="field">Field</option>
-                </select>
-            </label><br />
-            <label>Facility
-                <select id="facility">
-                    <option value="">Select facility</option>
-                </select>
-            </label>
-            <label> Zone
-                <select id="terrain">
-                    <option value="">Select zone</option>
-                </select>
-            </label>
-        </section>
-        <section>
-            <h2>Equipment</h2>
-            <label>
-                <input type="checkbox" id = "addEquipment"> Add equipment
-            </label>
-            <div id="equipmentBox" hidden>
-                <p>Select what you need</p>
-                <label><input type="checkbox" name="eq" value="balls">Balls</label><br>
-                <label><input type="checkbox" name="eq" value="rackets">Rackets</label><br>
-                <label><input type="checkbox" name="eq" value="net">Net</label><br>
-                <label><input type="checkbox" name="eq" value="cones">Cones</label><br>
-                <label><input type="checkbox" name="eq" value="mats">Mats</label><br>
-            </div>
-        </section>
-        <section>
-            <h2>Data and time</h2>
-            <label>Date <input type="date" id="date" name="date"></label><br />
-            <div class="time-range">
-                <label>From
-                    <input type="time" id="time_from" name="time_from" step = "900" disabled>
-                </label>
-                <label>To
-                    <input type="time" id="time_to" name="time_to" step = "900" disabled>
-                </label>
+        <div class="form-columns">
+            <div class="form-col-1">
+                <section>
+                    <h2>Personal information</h2>
+                    <label>First name
+                        <input type="text" id="firstName" name="firstName" required
+                               placeholder="John"
+                               maxlength="30"
+                               pattern="[A-Za-z]{1,30}">
+                    </label><br />
+                    <label>Last name
+                        <input type="text" id="lastName" name="lastName" required
+                               placeholder="Smith"
+                               maxlength="30"
+                               pattern="[A-Za-z]{1,30}">
+                    </label><br />
+                    <fieldset>
+                        <legend>Gender</legend>
+                        <label><input type="radio" name="gender" value="female" required> Female</label><br />
+                        <label><input type="radio" name="gender" value="male" required> Male</label><br />
+                        <label><input type="radio" name="gender" value="other" required> Other</label><br />
+                    </fieldset>
+                </section>
             </div>
 
-        </section>
+            <div class="form-col-2">
+                <section>
+                    <h2>Contact & Details</h2>
+                    <label>Date of birth <input id="birthDate" type="date" name="birthDate" required></label><br />
+                    <label>Age <input id="age" type="text" name="age" min="0" readonly placeholder="Age"></label><br />
+                    <label>Email
+                        <input type="email" name="email" required
+                               placeholder="example@gmail.com"
+                               pattern="[a-zA-Z0-9._-]{1,30}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                               maxlength="50"
+                               oninput="this.value = this.value.replace(/[^a-zA-Z0-9._@-]/g, '');"
+                               title="Enter a valid email">
+                    </label><br />
+                    <label>Phone code
+                        <select name="phone_code" required>
+                            <option value="+421">+421</option>
+                            <option value="+420">+420</option>
+                            <option value="+48">+48</option>
+                            <option value="+43">+43</option>
+                        </select>
+                    </label>
+                    <label>Phone number
+                        <input type="text" name="phone" required
+                               placeholder="123 456 789"
+                               pattern="[0-9]{9}"
+                               maxlength="9"
+                               inputmode="numeric"
+                               oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 9);">
+                    </label><br />
+                    <label>Number of people
+                        <input
+                                type="number"
+                                id="peopleCount"
+                                name="peopleCount"
+                                min="1"
+                                max="20"
+                                step="1"
+                                value="1"
+                                required
+                        >
+                    </label><br>
+                </section>
+            </div>
+
+            <div class="form-col-3">
+                <section>
+                    <h2>Facility selection</h2>
+                    <label>Facility type
+                        <select id="facility_type" required>
+                            <option value = "">Select type</option>
+                            <option value="gym">Gym</option>
+                            <option value="hall">Sports hall</option>
+                            <option value="field">Field</option>
+                        </select>
+                    </label><br />
+                    <label>Facility
+                        <select id="facility" required>
+                            <option value="">Select facility</option>
+                        </select>
+                    </label>
+                    <label> Zone
+                        <select id="terrain" required>
+                            <option value="">Select zone</option>
+                        </select>
+                    </label>
+                </section>
+
+                <section>
+                    <h2>Equipment</h2>
+                    <label>
+                        <input type="checkbox" id = "addEquipment"> Add equipment
+                    </label>
+                    <div id="equipmentBox" hidden>
+                        <p>Select what you need</p>
+                        <label><input type="checkbox" name="eq" value="balls" data-price="1" >Balls (+€1)</label><br>
+                        <label><input type="checkbox" name="eq" value="rackets" data-price="2" >Rackets (+€2)</label><br>
+                        <label><input type="checkbox" name="eq" value="net" data-price="3" >Net (+€3)</label><br>
+                        <label><input type="checkbox" name="eq" value="cones" data-price="1" >Cones (+€1)</label><br>
+                        <label><input type="checkbox" name="eq" value="mats" data-price="3" >Mats (+€3)</label><br>
+                    </div>
+                </section>
+            </div>
+
+            <div class="form-col-4">
+                <section>
+                    <h2>Data and time</h2>
+                    <label>Date <input type="date" id="date" name="date" required></label><br />
+                    <div class="time-range">
+                        <label>From
+                            <input type="time" id="time_from" name="time_from" step = "900" required>
+                        </label>
+                        <label>To
+                            <input type="time" id="time_to" name="time_to" step = "900" required>
+                        </label>
+                    </div>
+                </section>
+                <section>
+                    <h2>Payment</h2>
+                    <label><input type="radio" name="payMethod" value="card" checked required> Pay by card now</label><br>
+                    <label><input type="radio" name="payMethod" value="onsite" required> Pay on site (10% reservation deposit)</label>
+                </section>
+            </div>
+        </div>
+
+        <div class="price-summary">
+            <h2>Price summary</h2>
+            <div id="priceBreakdown">
+                Base: €<span id="basePrice">0.00</span><br>
+                Extras: €<span id="extrasPrice">0.00</span><br>
+                Discounts: −€<span id="discountsPrice">0.00</span><br>
+                <hr>
+                Total: €<span id="totalPrice">0.00</span><br>
+                <div id="paymentSplit" hidden>
+                    Deposit now (10%): €<span id="depositNow">0.00</span><br>
+                    Due on site: €<span id="dueOnSite">0.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-submit">
+            <button type="submit" class="submit-btn">Submit Booking</button>
+        </div>
     </form>
 </main>
-<script src="script.js" defer></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>
